@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :photo do
     source { Faker::LoremFlickr.image }
-    title { "MyString" }
-    description { "MyString" }
+    title { Faker::Hipster.word }
+    description { Faker::Hipster.sentence }
+    user
   end
 end
