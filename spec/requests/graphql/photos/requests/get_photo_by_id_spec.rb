@@ -6,7 +6,7 @@ RSpec.describe Types::QueryType do
     photo1 = create(:photo, user: user1)
     user2 = create(:user)
     photo2 = create(:photo, user: user2)
-    post graphql_path, params: { query: query(id: user1.photos.first.id) }
+    post graphql_path, params: { query: query1(id: user1.photos.first.id) }
     result = JSON.parse(response.body)
 
     expect(result.count).to eq(1)
@@ -22,7 +22,7 @@ RSpec.describe Types::QueryType do
     expect(result["data"]["photoById"]["userId"]).to eq(user1.id.to_s)
   end
 
-  def query(id:)
+  def query1(id:)
     <<~GQL
     query {
       photoById(id: #{id}) {
