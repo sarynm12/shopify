@@ -3,7 +3,7 @@ module Mutations
     argument :source, String, required: true
     argument :title, String, required: true
     argument :description, String, required: true
-    argument :user_id, String, required: true
+    argument :user_id, ID, required: true
 
     field :photo, Types::PhotoType, null: true
     field :errors, [String], null: false
@@ -11,7 +11,7 @@ module Mutations
     def resolve(source: nil, title: nil, description: nil, user_id: nil)
       photo = Photo.create!(
         source: source,
-        title: name,
+        title: title,
         description: description,
         user_id: user_id
       )
